@@ -18,29 +18,36 @@
     <div class="collapse navbar-collapse" id="navbarsExampleDefault">
     </div>
 </nav>
-
+<div class="container">
 <div class="jumbotron">
     <h1>Corona Tracker</h1>
     <p>This app lists current Corona Virus number of cases</p>
     <div class="container">
         <h1 class="display-3" th:text="${totalCases}"></h1>
         <p>Total cases reported as of today</p>
-         </div>
+        <hr class="my-4">
+        <span>New cases reported since previous day:</span><span th:text="${newCases}">0</span>
+
+    </div>
 </div>
 
-<table>
+<table class="table table-striped">
     <tr>
         <th>State</th>
         <th>Country</th>
         <th>Total cases</th>
+        <th>Changes since last day</th>
     </tr>
 <tr
         th:each="locationStat : ${locationStats}">
     <td th:text="${locationStat.state}" />
     <td th:text="${locationStat.country}" />
     <td th:text="${locationStat.latestTotalCases}">0</td>
+    <td th:text="${locationStat.diffFromPrevDay}">0</td>
+
 </tr>
 </table>
+</div>
 </body>
 
 </html>
